@@ -20,5 +20,6 @@ export const useAuth = () => {
         router.push({name: 'Home'})
     }
 
+    
     return { isAuthenticated, user, login, logout }
 }
