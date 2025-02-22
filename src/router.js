@@ -6,7 +6,7 @@ import LoginPage from './views/LoginPage.vue'
 import SettingsPage from './views/SettingsPage.vue'
 
 import { useAuth } from './composables/useAuth'
-const { isAutheticated } = useAuth()
+const { isAuthenticated } = useAuth()
 
 const routes = [
   { path: '/', name: 'Home', component: HomePage },
@@ -23,7 +23,7 @@ const router = createRouter({
 
 //navigation guard 
 router.beforeEach((to, _, next) => {
-  if (to.meta.requiresAuth && !isAutheticated.value) {
+  if(to.meta.requiresAuth && !isAuthenticated.value) {
     next({ name: 'LoginPage', query: { redirect: to.fullPath } })
   } else {
     next()
